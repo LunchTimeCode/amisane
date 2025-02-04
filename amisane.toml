@@ -1,10 +1,10 @@
 [[paths]]
 path = "example/somefile.csv"
-copy_files = false
+copy_files = true
 tests = ["FileHash"]
 
 [[paths]]
-path = "otherexample/otherfile.csv"
-copy_files = false
+path = "example/otherfile.csv"
+copy_files = true
 tests = ["FileHash"]
 

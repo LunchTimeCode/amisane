@@ -13,7 +13,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             init::init(&mut print)?;
         }
         Some(Commands::Prepare {}) => {
-            prepare::prepare(&mut print)?;
+            prepare::prepare(&mut print);
         }
         None => print.warning("Specify a command"),
     }
