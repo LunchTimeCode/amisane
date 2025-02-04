@@ -16,7 +16,9 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Rust setup
-        uses: dtolnay/rust-toolchain@nightly-2025-02-03
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: nightly-2025-02-03
       - name: Rust cache
         uses: swatinem/rust-cache@v2
  
