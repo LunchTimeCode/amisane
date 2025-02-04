@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/LunchTimeCode/amisane/compare/v0.1.0...v0.2.0) (2025-02-04)
+
+
+### Features
+
+* remove mac ([390db54](https://github.com/LunchTimeCode/amisane/commit/390db549299777b8fd511c67f7d8c4b157a13159))
+
 ## 0.1.0 (2025-02-04)
 
 
