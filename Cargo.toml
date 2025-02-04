@@ -1,11 +1,13 @@
 [package]
 name = "amisane"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 rust-version = "1.86.0"
 
 [dependencies]
 clap = { version = "4.5.27", features = ["derive", "env"] }
 comfy-table = "7.1.3"
-polars ={ version = "0.45.1", features = ["simd" ,"nightly"]} 
+polars ={ version = "0.45.1", features = ["simd" ,"nightly"] } 
+serde = { version = "1.0.217", features = ["derive"] }
+toml = "0.8.19"
 

@@ -7,7 +7,7 @@ pub enum State {
     Warning,
     #[default]
     Info,
-    Intemediate,
+    Intermediate,
 }
 
 impl std::fmt::Display for State {
@@ -17,7 +17,7 @@ impl std::fmt::Display for State {
             State::Failure => "Failure",
             State::Warning => "Warning",
             State::Info => "Info",
-            State::Intemediate => "Intemediate",
+            State::Intermediate => "Intermediate",
         };
         write!(f, "{}", s)
     }
@@ -30,7 +30,7 @@ impl State {
             State::Failure => Color::Red,
             State::Warning => Color::Yellow,
             State::Info => Color::DarkCyan,
-            State::Intemediate => Color::Magenta,
+            State::Intermediate => Color::Magenta,
         }
     }
 }
@@ -127,7 +127,7 @@ impl Print {
 
     pub fn intermediates(&mut self, texts: Vec<&str>) {
         for text in texts {
-            self.add(text, State::Intemediate);
+            self.add(text, State::Intermediate);
         }
     }
 

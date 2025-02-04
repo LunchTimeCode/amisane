@@ -1,4 +1,4 @@
-use clap::{command, Parser, Subcommand};
+use clap::{Parser, Subcommand, command};
 use utils::Print;
 
 mod init;
@@ -15,9 +15,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Some(Commands::Prepare {}) => {
             prepare::prepare(&mut print)?;
         }
-        None => {
-            println!("No command specified");
-        }
+        None => print.warning("Specify a command"),
     }
 
     print.flush();
