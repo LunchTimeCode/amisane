@@ -14,7 +14,7 @@ impl Default for Config {
 }
 
 fn sanity_example_paths() -> Vec<SanityPaths> {
-    vec![ 
+    vec![
         SanityPaths {
             path: "example/somefile.csv".to_string(),
             copy_files: false,
@@ -24,7 +24,7 @@ fn sanity_example_paths() -> Vec<SanityPaths> {
             path: "otherexample/otherfile.csv".to_string(),
             copy_files: false,
             tests: vec![Sanity::FileHash],
-        }
+        },
     ]
 }
 
@@ -34,7 +34,6 @@ struct SanityPaths {
     copy_files: bool,
     tests: Vec<Sanity>,
 }
-
 
 #[derive(Debug, Deserialize, Serialize, Default)]
 enum Sanity {
