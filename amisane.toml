@@ -1,3 +1,10 @@
+[[paths]]
+path = "example/somefile.csv"
 copy_files = false
-paths = []
+tests = ["FileHash"]
+
+[[paths]]
+path = "otherexample/otherfile.csv"
+copy_files = false
+tests = ["FileHash"]
 
