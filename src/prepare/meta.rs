@@ -47,7 +47,7 @@ fn sanity_read_path(print: &mut Print, path: &SanityPaths) -> SanityRead {
 
     let mut file_hash: Option<FileHash> = None;
 
-    if let Ok(file_contents) = std::fs::read_to_string(&path.get_path()) {
+    if let Ok(file_contents) = std::fs::read_to_string(path.get_path()) {
         for test in tests {
             match test {
                 Sanity::FileHash => {

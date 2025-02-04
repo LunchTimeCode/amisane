@@ -17,14 +17,12 @@ pub fn prepare(print: &mut Print) {
     };
 
     let Ok(_) = create_dir_all("amisane") else {
-        let msg = format!("Couldn't create amisane dir",);
-        print.failure(msg);
+        print.failure("Couldn't create amisane dir");
         return;
     };
 
     let Ok(_) = create_dir_all("amisane/files") else {
-        let msg = format!("Couldn't create amisane files dir",);
-        print.failure(msg);
+        print.failure("Couldn't create amisane files dir");
         return;
     };
 
@@ -42,6 +40,7 @@ pub fn prepare(print: &mut Print) {
     let mut file: File = match OpenOptions::new()
         .write(true)
         .create(true)
+        .truncate(true)
         .open("amisane/amisane_read.toml")
     {
         Ok(f) => f,
@@ -58,7 +57,7 @@ pub fn prepare(print: &mut Print) {
         return;
     }
 
-    return if !read.get_paths().is_empty()
+    if !read.get_paths().is_empty()
         && path_exists("amisane/amisane_read.toml")
         && files_copied(print, c.get_paths())
     {
@@ -70,8 +69,7 @@ pub fn prepare(print: &mut Print) {
 
 fn find_config(print: &mut Print) -> Option<Config> {
     let Ok(config) = std::fs::read_to_string("amisane.toml") else {
-        let msg = format!("Couldn't read file: amisane.toml");
-        print.failure(msg);
+        print.failure("Couldn't read file: amisane.toml");
         return None;
     };
 
@@ -93,14 +91,12 @@ pub fn path_exists(path: &str) -> bool {
 fn files_copied(print: &mut Print, paths: Vec<SanityPaths>) -> bool {
     let mut success = true;
     for path in paths {
-        if path.get_copy_files() {
-            if !path_exists(&path.get_path()) {
-                let msg = format!("Couldn't find file: {}", path.get_path());
-                print.failure(msg);
+        if path.get_copy_files() && !path_exists(&path.get_path()) {
+            let msg = format!("Couldn't find file: {}", path.get_path());
+            print.failure(msg);
 
-                if success {
-                    success = false;
-                }
+            if success {
+                success = false;
             }
         }
     }
