@@ -58,7 +58,7 @@ Creates a hash in the prepeare and check step over each row of the csv file.
 ### Platform Reproducibility
 
 When running amisane on the same file on different platforms, the hash can vary because of the different newline characters that are used on different platforms.
-So you should use prepare and check on the same platform not on the mixed.
+So you should use prepare and check on the same platform.
 
 ### Glossary
 
