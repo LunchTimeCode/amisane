@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/LunchTimeCode/amisane/compare/v0.2.0...v0.2.1) (2025-02-05)
+
+
+### Bug Fixes
+
+* README ([be4ae15](https://github.com/LunchTimeCode/amisane/commit/be4ae1579828d42d304a12ac1982778dea6bfa44))
+
 ## [0.2.0](https://github.com/LunchTimeCode/amisane/compare/v0.1.0...v0.2.0) (2025-02-04)
 
 
