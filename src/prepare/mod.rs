@@ -11,6 +11,8 @@ use crate::{
 
 mod meta;
 
+pub use meta::FileHash;
+
 pub fn prepare(print: &mut Print) {
     let Some(c) = find_config(print) else {
         return;

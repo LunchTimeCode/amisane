@@ -1,6 +1,8 @@
 use clap::{Parser, Subcommand, command};
 use utils::Print;
 
+mod check;
+mod hash;
 mod init;
 mod prepare;
 mod utils;

@@ -1,13 +1,10 @@
-use std::{
-    fs,
-    hash::{DefaultHasher, Hash, Hasher},
-    path::Path,
-};
+use std::{fs, path::Path};
 
 use serde::{Deserialize, Serialize};
 
 use crate::{
-    init::config::{Sanity, SanityPaths},
+    hash::{self},
+    init::config::SanityPaths,
     utils::Print,
 };
 
@@ -24,6 +21,12 @@ impl SanityReadPaths {
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct FileHash(String);
+
+impl FileHash {
+    pub fn new(hash: String) -> Self {
+        Self(hash)
+    }
+}
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct SanityRead {
@@ -45,21 +48,7 @@ fn sanity_read_path(print: &mut Print, path: &SanityPaths) -> SanityRead {
     let tests = path.get_tests();
     let copy_files = path.get_copy_files();
 
-    let mut file_hash: Option<FileHash> = None;
-
-    if let Ok(file_contents) = std::fs::read_to_string(path.get_path()) {
-        for test in tests {
-            match test {
-                Sanity::FileHash => {
-                    let hash = calculate_hash(&file_contents);
-                    file_hash = Some(FileHash(hash.to_string()));
-                }
-            }
-        }
-    } else {
-        let message = format!("Couldn't read file: {}", path.get_path());
-        print.failure(message);
-    };
+    let file_hash: Option<FileHash> = hash::hash(print, path, tests);
 
     if copy_files {
         let target_path = format!(
@@ -91,10 +80,4 @@ fn sanity_read_path(print: &mut Print, path: &SanityPaths) -> SanityRead {
         path: path.get_path(),
         file_hash,
     }
-}
-
-fn calculate_hash<T: Hash>(t: &T) -> u64 {
-    let mut s = DefaultHasher::new();
-    t.hash(&mut s);
-    s.finish()
 }
